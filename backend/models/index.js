@@ -17,23 +17,15 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 
 const db = {};
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
-
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+
+db.informe = require("./informe.model.js")(sequelize, Sequelize);
+db.juegos = require("./juego.model.js")(sequelize, Sequelize);
+db.lista = require("./lista.model.js")(sequelize, Sequelize);
+db.perfil = require("./perfil.model.js")(sequelize, Sequelize);
+db.review = require("./review.model.js")(sequelize, Sequelize);
+db.usuario = require("./usuario.model.js")(sequelize, Sequelize);
+
 
 module.exports = db;
