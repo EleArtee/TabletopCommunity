@@ -1,9 +1,9 @@
 const db = require("../models");
-const Usuario = db.usuario;
+const Admin = db.admin;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) =>{
-    const usuario = {
+    const admin = {
        nick: req.body.nick,
        email: req.body.email,
        contraseña: req.body.contraseña,
@@ -19,27 +19,27 @@ exports.create = (req, res) =>{
         return;
     }
 
-    Usuario.create(usuario)
+    Admin.create(admin)
     .then(data =>{
         res.send(data);
     })
     .catch(err => {
         res.status(500).send({
             message:
-                err.message || "Algo pasó mientras se creaba el usuario de mesa."
+                err.message || "Algo pasó mientras se creaba el admin de mesa."
         })
     });
 };
 
 exports.findAll = (req, res) =>{
-    Usuario.findAll()
+    Admin.findAll()
     .then(data => {
         res.send(data);
     })
     .catch(err =>{
         res.status(500).send({
             message:
-                err.message || "Algún error ocurrió mientras se obtenían los usuarios de mesa."
+                err.message || "Algún error ocurrió mientras se obtenían los admins de mesa."
         })
     })
 
@@ -47,21 +47,21 @@ exports.findAll = (req, res) =>{
 
 exports.findOne = (req, res) =>{
     const id = req.params.id;
-    Usuario.findByPK(id)
+    Admin.findByPK(id)
         .then(data =>{
             if (data) {
                 res.send(data);
             }
             else {
                 res.status(404).send({
-                    message: `No se pudo encontrar el usuario con el id=${id}.`
+                    message: `No se pudo encontrar el admin con el id=${id}.`
                 });
             }
         })
         .catch(err =>{
             res.status(500).send({
                 message:
-                    err.message || "Error obteniendo el usuario con el id =" + id
+                    err.message || "Error obteniendo el admin con el id =" + id
             })
         })
 };
@@ -69,24 +69,24 @@ exports.findOne = (req, res) =>{
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Usuario.update(req.body, {
-        where: { idUser: id }
+    Admin.update(req.body, {
+        where: { idAdmin: id }
     })
         .then(num =>{
             if (num == 1) {
                 res.send({
-                    message: "El usuario fue actualizado exitosamente."
+                    message: "El admin fue actualizado exitosamente."
                 });
             } else {
                 res.send({
-                    message: `No se pudo actualizar el usuario con el id=${id}`
+                    message: `No se pudo actualizar el admin con el id=${id}`
                 });
             }
         })
         .catch(err =>{
             res.status(500).send({
                 message:
-                    err.message || "Error actualizando el usuario con el id =" + id
+                    err.message || "Error actualizando el admin con el id =" + id
             })
         })
 };
@@ -94,24 +94,24 @@ exports.update = (req, res) => {
 exports.delete = (req, res) =>{
     const id = req.params.id;
 
-    Usuario.destroy( {
-        where: { idUser: id },
+    Admin.destroy( {
+        where: { idAdmin: id },
     })
         .then(num =>{
             if (num == 1) {
                 res.send({
-                    message: "El usuario fue eliminado exitosamente."
+                    message: "El admin fue eliminado exitosamente."
                 });
             } else {
                 res.send({
-                    message: `No se pudo eliminar el usuario con el id=${id}`
+                    message: `No se pudo eliminar el admin con el id=${id}`
                 });
             }
         })
         .catch(err =>{
             res.status(500).send({
                 message:
-                    err.message || "Error eliminando el usuario con el id =" + id
+                    err.message || "Error eliminando el admin con el id =" + id
             })
         })
 
