@@ -45,8 +45,8 @@ exports.findAll = (req, res) =>{
 };
 
 exports.findOne = (req, res) =>{
-    const id = req.params.idGame;
-    Juego.findByPK(id)
+    const id = req.params.id;
+    Juego.findByPk(id)
         .then(data =>{
             if (data) {
                 res.send(data);
@@ -66,10 +66,10 @@ exports.findOne = (req, res) =>{
 };
 
 exports.update = (req, res) => {
-    const id = req.params.idGame;
+    const id = req.params.id;
 
     Juego.update(req.body, {
-        where: { id: id }
+        where: { idGame: id }
     })
         .then(num =>{
             if (num == 1) {
@@ -91,10 +91,10 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) =>{
-    const id = req.params.idGame;
+    const id = req.params.id;
 
     Juego.destroy( {
-        where: { id: id },
+        where: { idGame: id },
     })
         .then(num =>{
             if (num == 1) {

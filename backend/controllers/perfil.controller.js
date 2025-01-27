@@ -27,14 +27,14 @@ exports.findAll = (req, res) =>{
     .catch(err =>{
         res.status(500).send({
             message:
-                err.message || "Algún error ocurrió mientras se obtenían los Perfils de mesa."
+                err.message || "Algún error ocurrió mientras se obtenían los perfiles."
         })
     })
 
 };
 
 exports.findOne = (req, res) =>{
-    const id = req.params.idProfile;
+    const id = req.params.id;
     Perfil.findByPK(id)
         .then(data =>{
             if (data) {
@@ -55,10 +55,10 @@ exports.findOne = (req, res) =>{
 };
 
 exports.update = (req, res) => {
-    const id = req.params.idProfile;
+    const id = req.params.id;
 
     Perfil.update(req.body, {
-        where: { id: id }
+        where: { idProfile: id }
     })
         .then(num =>{
             if (num == 1) {
@@ -80,10 +80,10 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) =>{
-    const id = req.params.idProfile;
+    const id = req.params.id;
 
     Perfil.destroy( {
-        where: { id: id },
+        where: { idProfile: id },
     })
         .then(num =>{
             if (num == 1) {

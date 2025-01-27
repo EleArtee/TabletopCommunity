@@ -44,7 +44,7 @@ exports.findAll = (req, res) =>{
 };
 
 exports.findOne = (req, res) =>{
-    const id = req.params.idUser;
+    const id = req.params.id;
     Usuario.findByPK(id)
         .then(data =>{
             if (data) {
@@ -65,10 +65,10 @@ exports.findOne = (req, res) =>{
 };
 
 exports.update = (req, res) => {
-    const id = req.params.idUser;
+    const id = req.params.id;
 
     Usuario.update(req.body, {
-        where: { id: id }
+        where: { idUser: id }
     })
         .then(num =>{
             if (num == 1) {
@@ -90,10 +90,10 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) =>{
-    const id = req.params.idUser;
+    const id = req.params.id;
 
     Usuario.destroy( {
-        where: { id: id },
+        where: { idUser: id },
     })
         .then(num =>{
             if (num == 1) {

@@ -42,7 +42,7 @@ exports.findAll = (req, res) =>{
 };
 
 exports.findOne = (req, res) =>{
-    const id = req.params.idReview;
+    const id = req.params.id;
     Review.findByPK(id)
         .then(data =>{
             if (data) {
@@ -63,10 +63,10 @@ exports.findOne = (req, res) =>{
 };
 
 exports.update = (req, res) => {
-    const id = req.params.idReview;
+    const id = req.params.id;
 
     Review.update(req.body, {
-        where: { id: id }
+        where: { idReview: id }
     })
         .then(num =>{
             if (num == 1) {
@@ -88,10 +88,10 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) =>{
-    const id = req.params.idReview;
+    const id = req.params.id;
 
     Review.destroy( {
-        where: { id: id },
+        where: { idReview: id },
     })
         .then(num =>{
             if (num == 1) {

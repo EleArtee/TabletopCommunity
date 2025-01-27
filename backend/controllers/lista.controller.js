@@ -42,7 +42,7 @@ exports.findAll = (req, res) =>{
 };
 
 exports.findOne = (req, res) =>{
-    const id = req.params.idList;
+    const id = req.params.id;
     Lista.findByPK(id)
         .then(data =>{
             if (data) {
@@ -63,10 +63,10 @@ exports.findOne = (req, res) =>{
 };
 
 exports.update = (req, res) => {
-    const id = req.params.idList;
+    const id = req.params.id;
 
     Lista.update(req.body, {
-        where: { id: id }
+        where: { idList: id }
     })
         .then(num =>{
             if (num == 1) {
@@ -88,10 +88,10 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) =>{
-    const id = req.params.idList;
+    const id = req.params.id;
 
     Lista.destroy( {
-        where: { id: id },
+        where: { idList: id },
     })
         .then(num =>{
             if (num == 1) {
