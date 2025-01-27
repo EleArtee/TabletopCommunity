@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-    const Usuario = sequelize.define("usuario", {
-        idUser: {
+    const Admin = sequelize.define("admin", {
+        idAdmin: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true,
@@ -19,14 +19,19 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false,
         },
-        isDeveloper:{
-            type: Sequelize.BOOLEAN,
-        },
-        empresa:{
+        nombre:{
             type: Sequelize.STRING,
-            unique: true
+            allowNull: false,
         },
+        apellidos:{
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+        direccion:{
+            type: Sequelize.STRING,
+            allowNull: false,
+        }
     });
 
-    return Usuario;
+    return Admin;
 }

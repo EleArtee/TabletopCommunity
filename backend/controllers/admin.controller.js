@@ -7,8 +7,9 @@ exports.create = (req, res) =>{
        nick: req.body.nick,
        email: req.body.email,
        contraseña: req.body.contraseña,
-       isDeveloper: req.body.isDeveloper,
-       empresa: req.body.empresa,
+       nombre: req.body.nombre,
+       apellidos: req.body.apellidos,
+       direccion: req.body.direccion,
     }
 
     if (!req.body.nick){
