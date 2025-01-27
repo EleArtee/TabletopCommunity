@@ -28,6 +28,22 @@ db.lista = require("./lista.model.js")(sequelize, Sequelize);
 db.perfil = require("./perfil.model.js")(sequelize, Sequelize);
 db.review = require("./review.model.js")(sequelize, Sequelize);
 db.usuario = require("./usuario.model.js")(sequelize, Sequelize);
+db.admin = require("./admin.model.js")(sequelize, Sequelize);
 
+db.usuario.hasOne(db.perfil, { foreignKey: 'idUser'});
+db.perfil.belongsTo(db.usuario, { foreignKey: 'idUser'});
+db.lista.belongsTo(db.usuario, { foreignKey: 'idUser' });
+db.lista.belongsToMany(db.juegos, { through: 'ListaJuegos'});
+db.juegos.belongsToMany(db.lista, { through: 'ListaJuegos'});
+db.review.hasOne(db.usuario, { foreignKey: 'idUser' });
+db.juegos.hasOne(db.admin, { foreignKey: 'idAdmin'});
+db.informeGame.hasOne(db.admin, { foreignKey: 'idAdmin'});
+db.informeList.hasOne(db.admin, { foreignKey: 'idAdmin'});
+db.informeReview.hasOne(db.admin, { foreignKey: 'idAdmin'});
+db.informeUser.hasOne(db.admin, { foreignKey: 'idAdmin'});
+db.informeGame.hasOne(db.juegos, { foreignKey: 'idGame'});
+db.informeList.hasOne(db.lista, { foreignKey: 'idUList'});
+db.informeReview.hasOne(db.review, { foreignKey: 'idReview'});
+db.informeUser.hasOne(db.usuario, { foreignKey: 'idUser'});
 
 module.exports = db;
