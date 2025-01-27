@@ -17,6 +17,8 @@ app.get("/", (req, res) => {
     res.json({ message: "Bienvenide a la aplicación de la app de juegos de mesa."});
 });
 
+require("./routes/juego.routes")(app);
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () =>{
     console.log(`Server is running on port ${PORT}.`);

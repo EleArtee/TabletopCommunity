@@ -1,5 +1,4 @@
 const dbConfig = require("../config/db.config.js");
-const fs = require('fs');
 
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
@@ -20,7 +19,10 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.informe = require("./informe.model.js")(sequelize, Sequelize);
+db.informeGame = require("./informeJuego.model.js")(sequelize, Sequelize);
+db.informeList = require("./informeLista.model.js")(sequelize, Sequelize);
+db.informeReview = require("./informeReview.model.js")(sequelize, Sequelize);
+db.informeUser = require("./informeUsuario.model.js")(sequelize, Sequelize);
 db.juegos = require("./juego.model.js")(sequelize, Sequelize);
 db.lista = require("./lista.model.js")(sequelize, Sequelize);
 db.perfil = require("./perfil.model.js")(sequelize, Sequelize);

@@ -1,17 +1,17 @@
 const db = require("../models");
-const Juego = db.juego;
+const Juego = db.juegos;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) =>{
     const juego = {
-       nombre: req.body.name,
-       descripcion: req.body.description,
+       nombre: req.body.nombre,
+       descripcion: req.body.descripcion,
        precio: req.body.precio,
-       desarrolladora: req.body.developer,
+       desarrolladora: req.body.desarrolladora,
        filename: req.file ? req.file.filename : ""
     }
 
-    if (!req.body.name || !req.body.description || !req.body.precio || !req.body.developer){
+    if (!req.body.nombre){
         res.status(400).send({
             message: "Falta información obligatoria"
         });

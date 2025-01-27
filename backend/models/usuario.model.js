@@ -30,7 +30,7 @@ module.exports = (sequelize, Sequelize) => {
             unique: true
         },
         nombre:{
-            type: Sequelize.String,
+            type: Sequelize.STRING,
         },
         apellidos:{
             type: Sequelize.STRING,
