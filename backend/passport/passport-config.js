@@ -28,7 +28,7 @@ function initialize(passport){
     passport.serializeUser((user, done) => done(null, user.idUser))
     
     passport.deserializeUser(async (idUser, done) => {  
-        done(null, await Usuario.findOne().where('email', email))
+        done(null, await Usuario.findOne().where('idUser', idUser))
     })
 }
 
