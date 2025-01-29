@@ -1,4 +1,5 @@
 const express = require("express");
+const passport = require("passport");
 
 const app = express();
 
@@ -16,6 +17,9 @@ db.sequelize.sync({force: true}).then(() =>{
 app.get("/", (req, res) => {
     res.json({ message: "Bienvenide a la aplicación de la app de juegos de mesa."});
 });
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 require("./routes/juego.routes")(app);
 
