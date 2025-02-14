@@ -2,14 +2,6 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
-            https://cordova.apache.org/docs/en/latest/
-        Some notes:
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
@@ -21,12 +13,13 @@
     <body>
         <header>
             <nav>
-               <a href="index.html"><img src="https://www.eniun.com/wp-content/uploads/ENIUN@1x.png" alt="Eniun logo" width="74" height="33"></a>
-               <ul>
-                    <li><a href="#">Perfil</a></li>
-                    <li><a href="#">Juegos</a></li>
-                    <li><a href="#">Listas</a></li>
-                    <li><a href="#">Contacto</a></li>
+                <ul class ="menu">
+                    <li class ="menu text" id="logo"><a href="index.html"><img src="https://www.eniun.com/wp-content/uploads/ENIUN@1x.png" alt="Eniun logo" width="74" height="33"></a></li>
+                    <li class ="menu text"><a href="#" class ="menu">Contacto</a></li>
+                    <li class ="menu text"><a href="#" class ="menu">Listas</a></li>
+                    <li class ="menu text"><a href="#" class ="menu">Juegos</a></li>
+                    <li class ="menu text"><a href="signin.html" class ="menu">Crear cuenta</a></li>
+                    <li class ="menu text"><a href="login.html" class ="menu">Conectarse</a></li>
                </ul>
             </nav>
          </header>
