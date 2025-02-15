@@ -1,0 +1,177 @@
+/* Generic stuff for the whole page */
+
+/* hexcodes 
+dark blue #091d65
+light blue #b3d8fc
+blue #6b9bff
+light orange #f44f1d
+orange #f13800 */
+
+
+body {
+    background-color: #b3d8fc;
+    margin: 0px;
+}
+
+header {
+    margin: 0px;
+    padding: 0px;
+    max-width: 100%;
+    background-color: black;
+    position: sticky;
+    top: 0;
+}
+
+ main {
+    padding: 40px;
+    display: flex;
+} 
+
+
+h1 {
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+}
+
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f44f1d;
+}
+
+li.menu {
+    display:inline;
+    float: right;
+}
+
+a.menu {
+    display: block;
+}
+
+li.menu a.menu {
+    color: white;
+    text-align: center;
+    padding: 14px 30px;
+    text-decoration: none;
+}
+
+a.menu:hover{
+    background-color: #f13800;
+}
+
+#logo{
+    float:left
+}
+
+.text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.title {
+    font-family: monospace;
+}
+
+
+#bigT{
+    font-size: 60px;
+    text-decoration-line: overline;
+}
+
+/* Concrete stuff for this css */
+
+#gamepic{
+    width: 500px;
+    border-bottom: 3px solid #f13800;
+}
+
+#basicdata{
+    border: 3px solid #f13800;
+}
+
+#moredata{
+    border: 3px solid  #091d65;
+    width: 80%;
+    border-left: none;
+}
+
+ul.tag{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li.tag{
+    display:inline-block;
+    text-align: center;
+    background-color: #a2b3c4;
+    border: 2px solid #7e91a3;
+    margin: 5px;
+    padding: 5px;
+    color: #5a6875;
+    border-radius: 4px;
+}
+
+#etiquetas{
+    text-align: center;
+    border-bottom: 3px solid #091d65;
+}
+
+#desc{
+    border-bottom: 3px solid #091d65;
+}
+
+.desc{
+    margin: 10px;
+    color: #091d65;
+    margin-bottom: 15px;
+}
+
+table{
+    background-color: #ff7950;
+    border: 3px solid #f44f1d;
+    border-collapse: collapse;
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+}
+
+.star{
+    border-bottom: 3px solid #b3d8fc;
+}
+
+td{
+    padding: 5px;
+}
+
+#reviews{
+    padding: 10px;
+    padding-bottom: 0px;
+    height: 500px;
+    overflow-y: scroll;
+    scrollbar-color: #091d65 #b3d8fc;
+}
+
+#info{
+    background-color: #b3d8fc;
+    height: 290px;
+    width: 500px;
+    margin: 0px;
+    padding: 0px;  
+    border: none; 
+    text-align: center;
+}
+
+.baseinfo{
+    padding: 0px;
+    font-size: 20px;
+    border-bottom: 3px solid #f13800;
+    color: #091d65;
+}
+
+#end{
+    border: none;
+}
