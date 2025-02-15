@@ -22,7 +22,7 @@ exports.create = (req, res) =>{
     .catch(err => {
         res.status(500).send({
             message:
-                err.message || "Algo pasó mientras se creaba el review de mesa."
+                err.message || "Algo pasó mientras se creaba la review."
         })
     });
 };
@@ -35,7 +35,7 @@ exports.findAll = (req, res) =>{
     .catch(err =>{
         res.status(500).send({
             message:
-                err.message || "Algún error ocurrió mientras se obtenían los reviews de mesa."
+                err.message || "Algún error ocurrió mientras se obtenían las reviews."
         })
     })
 
@@ -71,18 +71,18 @@ exports.update = (req, res) => {
         .then(num =>{
             if (num == 1) {
                 res.send({
-                    message: "El review fue actualizado exitosamente."
+                    message: "La review fue actualizado exitosamente."
                 });
             } else {
                 res.send({
-                    message: `No se pudo actualizar el review con el id=${id}`
+                    message: `No se pudo actualizar la review con el id=${id}`
                 });
             }
         })
         .catch(err =>{
             res.status(500).send({
                 message:
-                    err.message || "Error actualizando el review con el id =" + id
+                    err.message || "Error actualizando la review con el id =" + id
             })
         })
 };
@@ -96,18 +96,18 @@ exports.delete = (req, res) =>{
         .then(num =>{
             if (num == 1) {
                 res.send({
-                    message: "El review fue eliminado exitosamente."
+                    message: "La review fue eliminada exitosamente."
                 });
             } else {
                 res.send({
-                    message: `No se pudo eliminar el review con el id=${id}`
+                    message: `No se pudo eliminar la review con el id=${id}`
                 });
             }
         })
         .catch(err =>{
             res.status(500).send({
                 message:
-                    err.message || "Error eliminando el review con el id =" + id
+                    err.message || "Error eliminando la review con el id =" + id
             })
         })
 
