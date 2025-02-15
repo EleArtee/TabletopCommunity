@@ -11,6 +11,8 @@ orange #f13800 */
 body {
     background-color: #b3d8fc;
     margin: 0px;
+    height: 100vh;
+    overflow-y: hidden;
 }
 
 header {
@@ -22,13 +24,6 @@ header {
     top: 0;
 }
 
-/* main {
-    padding: 40px;
-} */
-
-main{
-    padding-top: 40px;
-}
 
 h1 {
     font-weight:normal;
@@ -85,43 +80,115 @@ a.menu:hover{
 
 /* Concrete stuff for this css */
 
-.welcome {
-    text-align:center;
-    color: #1d2542;
-}
-
-.welcome-b {
+#sidenav{
+    float: right;
+    background-color: #f44f1d;
+    width: 20%;
+    display: inline-block;
     text-align: center;
-    border-radius: 8px;
-    background-color:#6b9bff ;
+    padding: 20px;
+    height: 100vh;
+}
+
+#taglist {
+    list-style-type: none;
+    height: 100%;
+    padding: 10px;
+}
+
+main{
+    height: 100%;
+}
+
+#micromain{
+    float: left;
+    width: 77%;
+    text-align: center;
+    height: 100%;
+}
+
+#juegotitle{
+    font-size: 50px;
+    color: #091d65;
+}
+
+#juegos{
+    padding: 40px;
+    width:87%;
+    height:80%;
+    padding-left: 49px;
+    margin: 30px;
+    margin-top: 5px;
+    text-align: center;
+    background-color: #6b9bff;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    overflow-y: scroll;
+    scrollbar-color: #091d65 #6b9bff;
+}
+
+.imgjuego{
+    width: 250px;
+    border-bottom: 5px solid #6b9bff;
+}
+
+.juego{
+    width: 250px;
+    border: 5px solid #6b9bff;
+    border-radius: 4px;
+    background-color: aliceblue;
+    display: inline-block;
+}
+
+h3 {
+    border-bottom: 5px solid #6b9bff;
+    margin-top: 5px ;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+p{
+    margin: 5px;
+}
+
+.gamelink{
     text-decoration: none;
-    color: white;
-    padding: 12px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    color: black;
+    cursor: pointer;
+    width: 260px;
+}
+
+.search{
+    background-color: white;
+  background-image: url('../img/searchicon.png');
+  background-position: 10px;
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  padding-left: 40px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  width: 155px;
+  border: 4px solid #ff825d;
+  border-radius: 100px;
+  color: #000ed193;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  outline: none;
+}
+
+.search:focus{
+    width: 90%;
+    border: 4px solid #6b9bff;
+}
+
+.tag{
+    margin-bottom: 20px;
     font-size: 20px;
+    float: left;
+  display: inline;
+  width: 50%;
+  color: aliceblue;
 }
 
-.welcome-b:hover{
-    background-color: #091d65;
-    color: white;
-    transition-duration: 0.4s;
-}
 
-.w-text{
-    font-size: 24px;
-}
-
-article{
-    display: grid;
-    place-content: center;
-    padding-bottom: 20px;
-}
-
-#portada{
-    width: 100%;
-    object-fit: cover;
-    height: 350px;
-    margin-top: 30px;
-    opacity: 0.7;
-    
-}
