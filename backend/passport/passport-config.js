@@ -1,4 +1,4 @@
-import { Strategy as LocalStrategy } from "passport-local";
+/* import { Strategy as LocalStrategy } from "passport-local";
 const db = require("../models");
 const Usuario = db.usuario;
 const Op = db.Sequelize.Op;
@@ -33,4 +33,4 @@ function initialize(passport){
 }
 
 
-export default initialize
+export default initialize */

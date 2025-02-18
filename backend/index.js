@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Bienvenide a la aplicación de la app de juegos de mesa."});
 });
 
-app.use(session({
+/* app.use(session({
 	secret: 'secret',
 	resave: true,
 	saveUninitialized: true
@@ -31,7 +31,7 @@ app.use(passport.session());
 initializePassport(passport, async email =>{
     const user = (await Usuario.findOne()).where('email', email);
     return user;
-})
+}) */
 
 require("./routes/juego.routes")(app);
 
