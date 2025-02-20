@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "192.168.0.27",
+    HOST: "localhost",
     USER: "root",
     PASSWORD: "thorpedo65",
     DB: "db_tabletopcommunity",

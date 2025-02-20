@@ -7,8 +7,8 @@ exports.create = (req, res) =>{
        nombre: req.body.nombre,
        descripcion: req.body.descripcion,
        precio: req.body.precio,
-       desarrolladora: req.body.desarrolladora,
-       filename: req.file ? req.file.filename : ""
+       editorial: req.body.editorial,
+       filename: req.file.filename
     }
 
     if (!req.body.nombre){

@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DOUBLE,
             allowNull: false,
         },
-        desarrolladora:{
+        editorial:{
             type: Sequelize.STRING,
             allowNull: false,
         },
