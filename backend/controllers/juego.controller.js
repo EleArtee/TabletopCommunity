@@ -8,7 +8,7 @@ exports.create = (req, res) =>{
        descripcion: req.body.descripcion,
        precio: req.body.precio,
        editorial: req.body.editorial,
-       filename: req.file.filename
+       filename: req.body.filename,
     }
 
     if (!req.body.nombre){

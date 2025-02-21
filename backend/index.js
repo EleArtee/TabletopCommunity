@@ -34,6 +34,16 @@ initializePassport(passport, async email =>{
 }) */
 
 require("./routes/juego.routes")(app);
+require("./routes/usuario.routes")(app);
+require("./routes/admin.routes")(app);
+require("./routes/lista.routes")(app);
+require("./routes/perfil.routes")(app);
+require("./routes/review.routes")(app);
+require("./routes/tag.routes")(app);
+require("./routes/informeJuego.routes")(app);
+require("./routes/informeReview.routes")(app);
+require("./routes/informeLista.routes")(app);
+require("./routes/informeUsuario.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () =>{

@@ -1,8 +1,5 @@
 const API_URL = 'http://localhost:8080/api/juego'
 
-function gotoGPage(id){
-  location.href(`juego.html/id=${id}`);
-}
   async function allGames() {
     const response = await fetch(API_URL, {method: 'GET'})
     let data = await response.json()
@@ -11,7 +8,7 @@ function gotoGPage(id){
     let out = "";
     for (let game of data){
       out +=`
-        <a href="juego.html?id=${game.idGame}"><div class="juego">
+        <a href="juego.html?id=${game.idGame}" class="gamelink"><div class="juego">
           <img class="imgjuego" src="${game.filename}" referrerpolicy="no-referrer" alt="">
           <h3 class="text">${game.nombre}</h3>
           <p class="text">media</p>

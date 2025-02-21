@@ -6,7 +6,7 @@ exports.create = (req, res) =>{
     const usuario = {
        nick: req.body.nick,
        email: req.body.email,
-       contrasena: req.body.contraseña,
+       contrasena: req.body.contrasena,
        isDeveloper: req.body.isDeveloper,
        empresa: req.body.empresa,
     }
@@ -25,7 +25,7 @@ exports.create = (req, res) =>{
     .catch(err => {
         res.status(500).send({
             message:
-                err.message || "Algo pasó mientras se creaba el usuario de mesa."
+                err.message || "Algo pasó mientras se creaba el usuario."
         })
     });
 };
@@ -38,7 +38,7 @@ exports.findAll = (req, res) =>{
     .catch(err =>{
         res.status(500).send({
             message:
-                err.message || "Algún error ocurrió mientras se obtenían los usuarios de mesa."
+                err.message || "Algún error ocurrió mientras se obtenían los usuarios."
         })
     })
 
@@ -46,7 +46,7 @@ exports.findAll = (req, res) =>{
 
 exports.findOne = (req, res) =>{
     const id = req.params.id;
-    Usuario.findByPK(id)
+    Usuario.findByPk(id)
         .then(data =>{
             if (data) {
                 res.send(data);

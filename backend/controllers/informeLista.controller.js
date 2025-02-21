@@ -42,7 +42,7 @@ exports.findAll = (req, res) =>{
 
 exports.findOne = (req, res) =>{
     const id = req.params.id;
-    informeLista.findByPK(id)
+    informeLista.findByPk(id)
         .then(data =>{
             if (data) {
                 res.send(data);

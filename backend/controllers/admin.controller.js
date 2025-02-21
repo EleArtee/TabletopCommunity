@@ -47,7 +47,7 @@ exports.findAll = (req, res) =>{
 
 exports.findOne = (req, res) =>{
     const id = req.params.id;
-    Admin.findByPK(id)
+    Admin.findByPk(id)
         .then(data =>{
             if (data) {
                 res.send(data);

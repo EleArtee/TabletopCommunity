@@ -36,6 +36,7 @@ db.lista.belongsTo(db.usuario, { foreignKey: 'idUser' });
 db.lista.belongsToMany(db.juegos, { through: 'ListaJuegos'});
 db.juegos.belongsToMany(db.lista, { through: 'ListaJuegos'});
 db.review.belongsTo(db.usuario, { foreignKey: 'idUser' });
+db.review.belongsTo(db.juegos, { foreignKey: 'idGame' });
 db.informeGame.belongsTo(db.admin, { foreignKey: 'idAdmin'});
 db.informeList.belongsTo(db.admin, { foreignKey: 'idAdmin'});
 db.informeReview.belongsTo(db.admin, { foreignKey: 'idAdmin'});
