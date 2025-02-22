@@ -94,6 +94,17 @@ form{
     padding-bottom: 50px;
 }
 
+#contact{
+    width: 40%;
+    background-color: #6b9bff;
+    margin-top: 40px;
+    padding: 30px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+    padding-bottom: 50px;
+}
+
 .inputext{
     padding: 10px;
     width: 30%;
@@ -125,4 +136,14 @@ input[type=submit]{
     border-radius: 5px;
     color:#c8cfd6;
     font-size: large;
+}
+
+.contactlink{
+    font-size: 25px;
+    color: #091d65;
+    margin: 20px;
+}
+
+.icon{
+    width: 25px;
 }
