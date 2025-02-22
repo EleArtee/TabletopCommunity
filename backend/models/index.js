@@ -30,6 +30,7 @@ db.review = require("./review.model.js")(sequelize, Sequelize);
 db.usuario = require("./usuario.model.js")(sequelize, Sequelize);
 db.admin = require("./admin.model.js")(sequelize, Sequelize);
 db.tag = require("./tag.model.js")(sequelize, Sequelize);
+db.tagjuegos = require("./tagjuegos.model.js")(sequelize, Sequelize);
 
 db.usuario.hasOne(db.perfil, { foreignKey: 'idUser'});
 db.lista.belongsTo(db.usuario, { foreignKey: 'idUser' });

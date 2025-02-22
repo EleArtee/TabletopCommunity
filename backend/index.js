@@ -44,6 +44,7 @@ require("./routes/informeJuego.routes")(app);
 require("./routes/informeReview.routes")(app);
 require("./routes/informeLista.routes")(app);
 require("./routes/informeUsuario.routes")(app);
+require("./routes/tagjuegos.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () =>{
