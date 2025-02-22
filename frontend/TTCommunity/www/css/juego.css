@@ -136,7 +136,9 @@ table{
     border: 3px solid #f44f1d;
     border-collapse: collapse;
     color: rgb(255, 255, 255);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .star{
@@ -174,4 +176,8 @@ td{
 
 #end{
     border: none;
+}
+
+#review{
+    text-align: center;
 }
