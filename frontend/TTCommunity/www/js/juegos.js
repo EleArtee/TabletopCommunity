@@ -1,4 +1,5 @@
 const API_URL = 'http://localhost:8080/api/juego'
+const TAG_URL = 'http://localhost:8080/api/tag'
 
   async function allGames() {
     const response = await fetch(API_URL, {method: 'GET'})
@@ -18,11 +19,22 @@ const API_URL = 'http://localhost:8080/api/juego'
 
     placeholder.innerHTML = out;
 
-    console.log(response)
-
-    console.log(data)
   }
 
+  async function allTags(){
+    const response = await fetch(TAG_URL, {method: 'GET'})
+    let data = await response.json()
+
+
+    let taglist = document.querySelector('#taglist');
+    let out = "";
+    for (let tag of data){
+      out +=`
+        <li class="text tag"><input type="checkbox" id="c1"><label for="c1"> ${tag.nombre}</label></li>
+      `
+    }
+    taglist.innerHTML = out;
+  }
   
 /*     if (response) {
       hideloader();
@@ -60,3 +72,4 @@ const API_URL = 'http://localhost:8080/api/juego'
   } */
 
     allGames()
+    allTags()

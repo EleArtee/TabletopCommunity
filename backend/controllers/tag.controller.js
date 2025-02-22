@@ -39,3 +39,24 @@ exports.findAll = (req, res) =>{
     })
 
 };
+
+exports.findOne = (req, res) =>{
+    const id = req.params.id;
+    Tag.findByPk(id)
+        .then(data =>{
+            if (data) {
+                res.send(data);
+            }
+            else {
+                res.status(404).send({
+                    message: `No se pudo encontrar la etiqueta con el id=${id}.`
+                });
+            }
+        })
+        .catch(err =>{
+            res.status(500).send({
+                message:
+                    err.message || "Error obteniendo la etiqueta con el id =" + id
+            })
+        })
+};

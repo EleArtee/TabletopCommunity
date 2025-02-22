@@ -3,6 +3,9 @@ const id = url.split("=")[url.split("=").length - 1];
 
 const API_URL = 'http://localhost:8080/api/juego/' + id
 const REVIEW_URL = 'http://localhost:8080/api/review'
+let TAG_URL = 'http://localhost:8080/api/tag/'
+const TG_URL = 'http://localhost:8080/api/taggame'
+
 
 console.log(API_URL)
 
@@ -11,6 +14,12 @@ console.log(API_URL)
     let data = await response.json()
     console.log(response)
     console.log(data)
+
+    const tagsresp = await fetch(TAG_URL, {method: 'GET'});
+    let tags = await tagsresp.json()
+
+    const tagsgresp = await fetch(TG_URL, {method: 'GET'});
+    let tgs = await tagsgresp.json()
 
     const resp = await fetch(REVIEW_URL, {method: 'GET'})
     let redata = await resp.json()
@@ -78,6 +87,18 @@ console.log(API_URL)
     }
     console.log(out3)
     reviews.innerHTML = out3;
+
+    let etiquetas = document.querySelector("#tags");
+    let out4 = "";
+    for (let tg of tgs){
+        if (tg.juegoIdGame == id){
+            let etiqueta = TAG_URL + tg.tagIdTag
+            const tagr = await fetch(etiqueta, {method: 'GET'});
+            let tags = await tagr.json()
+            out4 += `<li class="tag text">${tags.nombre}</li>`
+        }
+    }
+    etiquetas.innerHTML = out4;
     }
 
 

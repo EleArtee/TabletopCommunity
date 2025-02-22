@@ -4,6 +4,9 @@ module.exports = app => {
 
     router.post("/", Tag.create);
     router.get("/", Tag.findAll);
+    router.get("/:id", Tag.findOne);
 
     app.use('/api/tag', router);
+
+
 }
