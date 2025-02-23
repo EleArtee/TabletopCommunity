@@ -2,14 +2,18 @@ const db = require("../models");
 const Usuario = db.usuario;
 const Op = db.Sequelize.Op;
 
+
 exports.create = (req, res) =>{
-    const usuario = {
+    let usuario = {
        nick: req.body.nick,
        email: req.body.email,
        contrasena: req.body.contrasena,
        isDeveloper: req.body.isDeveloper,
        empresa: req.body.empresa,
     }
+
+    const hashpass = argon2.hash((usuario['contrasena']));
+    usuario['contrasena'] = hashpass.toString();
 
     if (!req.body.nick){
         res.status(400).send({
