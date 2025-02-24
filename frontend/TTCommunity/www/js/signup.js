@@ -1,5 +1,5 @@
 
-
+const CORS = 'https://cors-anywhere.herokuapp.com/'
 USER_URL = "http://localhost:8080/api/usuario";
 
 async function signup(){
@@ -19,7 +19,7 @@ async function signup(){
 
     newuser = JSON.stringify(user)
 
-    const response = await fetch(USER_URL, {
+    const response = await fetch(CORS+USER_URL, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -27,6 +27,6 @@ async function signup(){
           },
         body: newuser
     })
-    let data = await response.json()
+
 
 }

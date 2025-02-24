@@ -1,7 +1,7 @@
 const db = require("../models");
 const Usuario = db.usuario;
 const Op = db.Sequelize.Op;
-
+const bcrypt = require('bcryptjs');
 
 exports.create = (req, res) =>{
     let usuario = {
@@ -11,8 +11,8 @@ exports.create = (req, res) =>{
        isDeveloper: req.body.isDeveloper,
        empresa: req.body.empresa,
     }
-
-    const hashpass = argon2.hash((usuario['contrasena']));
+    let salt = 2;
+    const hashpass = bcrypt.hashSync((usuario['contrasena']), salt);
     usuario['contrasena'] = hashpass.toString();
 
     if (!req.body.nick){

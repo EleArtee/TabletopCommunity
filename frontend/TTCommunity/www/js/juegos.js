@@ -1,8 +1,9 @@
 const API_URL = 'http://localhost:8080/api/juego'
 const TAG_URL = 'http://localhost:8080/api/tag'
+const CORS = 'https://cors-anywhere.herokuapp.com/'
 
   async function allGames() {
-    const response = await fetch(API_URL, {method: 'GET'})
+    const response = await fetch(CORS+API_URL, {method: 'GET'})
     let data = await response.json()
 
     let placeholder = document.querySelector("#juegos");
@@ -22,7 +23,7 @@ const TAG_URL = 'http://localhost:8080/api/tag'
   }
 
   async function allTags(){
-    const response = await fetch(TAG_URL, {method: 'GET'})
+    const response = await fetch(CORS+TAG_URL, {method: 'GET'})
     let data = await response.json()
 
 
