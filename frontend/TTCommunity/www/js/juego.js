@@ -5,24 +5,24 @@ const API_URL = 'http://localhost:8080/api/juego/' + id
 const REVIEW_URL = 'http://localhost:8080/api/review'
 let TAG_URL = 'http://localhost:8080/api/tag/'
 const TG_URL = 'http://localhost:8080/api/taggame'
-const CORS = 'https://cors-anywhere.herokuapp.com/'
+
 
 
 console.log(API_URL)
 
   async function getGame() {
-    const response = await fetch(CORS+API_URL, {method: 'GET'})
+    const response = await fetch(API_URL, {method: 'GET'})
     let data = await response.json()
     console.log(response)
     console.log(data)
 
-    const tagsresp = await fetch(CORS+TAG_URL, {method: 'GET'});
+    const tagsresp = await fetch(TAG_URL, {method: 'GET'});
     let tags = await tagsresp.json()
 
-    const tagsgresp = await fetch(CORS+TG_URL, {method: 'GET'});
+    const tagsgresp = await fetch(TG_URL, {method: 'GET'});
     let tgs = await tagsgresp.json()
 
-    const resp = await fetch(CORS+REVIEW_URL, {method: 'GET'})
+    const resp = await fetch(REVIEW_URL, {method: 'GET'})
     let redata = await resp.json()
 
     let stars = 0;

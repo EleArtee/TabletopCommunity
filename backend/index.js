@@ -1,11 +1,12 @@
 const express = require("express");
 const session = require("express-session");
+const cors = require("cors");
 
 const app = express();
 
 // public directory
 app.use(express.json());
-
+app.use(cors());
 app.use(express.urlencoded({extended:true}));
 
 const db = require("./models");

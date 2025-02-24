@@ -1,9 +1,8 @@
 const API_URL = 'http://localhost:8080/api/juego'
-const TAG_URL = 'http://localhost:8080/api/tag'
-const CORS = 'https://cors-anywhere.herokuapp.com/'
+let TAG_URL = 'http://localhost:8080/api/tag/'
 
   async function allGames() {
-    const response = await fetch(CORS+API_URL, {method: 'GET'})
+    const response = await fetch(API_URL, {method: 'GET'})
     let data = await response.json()
 
     let placeholder = document.querySelector("#juegos");
@@ -23,7 +22,7 @@ const CORS = 'https://cors-anywhere.herokuapp.com/'
   }
 
   async function allTags(){
-    const response = await fetch(CORS+TAG_URL, {method: 'GET'})
+    const response = await fetch(TAG_URL, {method: 'GET'})
     let data = await response.json()
 
 
@@ -36,41 +35,7 @@ const CORS = 'https://cors-anywhere.herokuapp.com/'
     }
     taglist.innerHTML = out;
   }
-  
-/*     if (response) {
-      hideloader();
-    }
 
-    show(data)
-
-  } */
-
-  /* function hideloader() {
-    document.getElementById('loading').style.display = 'none';
-  } */
-
-
- /*  function show(data) {
-    console.log(data, ' inside show')
-    const ul = document.getElementById('posts')
-    const list = document.createDocumentFragment();
-    let li = document.createElement('li');
-    let title = document.createElement('h1');
-    let body = document.createElement('p')
-    data.map(function (post) {
-
-      title.innerHTML = `${post.title}`;
-      body.innerHTML = `${post.body}`;
-
-      li.appendChild(title);
-      li.appendChild(body);
-      list.appendChild(li);
-
-      // console.log(list)
-      // console.log(li)
-    })
-    ul.appendChild(list);
-  } */
 
     allGames()
     allTags()
