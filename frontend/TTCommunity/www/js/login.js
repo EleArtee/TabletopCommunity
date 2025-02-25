@@ -25,6 +25,7 @@ async function login(){
         body: checkuser}
     )
 
+    console.log(answer)
     let booli = await answer.json()
 
     const usearch = await fetch(USER_URL, {method:'GET'})
@@ -48,23 +49,25 @@ async function login(){
 
     if(idUser == 0){
         alert('No existe un usuario con este correo')}
-
-    if(activator == true){
-        const user = {
-            id: idUser,
-            nick: nickUser
-        }
-        const restoken = await fetch(AUTH_URL, 
-            {method: 'POST',
-            headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-            },
-            body: user})
-        let token = await restoken.json()
-        localStorage.setItem('token', token);
-        window.location.href = "../html/index.html"
+    const user =  JSON.stringify({
+                id: idUser,
+                nick: nickUser
+            })
+    if(activator == false){
+        reload()
     }
+    const restoken = await fetch("http://localhost:8080/api/auth", 
+        {method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        body: user}
+    )
+
+
+    localStorage.setItem('token', restoken);
+    window.location.href = "../html/index.html"
 
     console.log("Hemos llegao")
 /*     const userfind = await fetch (API_URL+idUser, {method: 'GET'})

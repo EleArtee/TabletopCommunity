@@ -1,7 +1,6 @@
 USER_URL = "http://localhost:8080/api/usuario";
 
 async function signup(){
-    console.log("tio no")
     const nickinput = document.getElementById("fnick");
     const nick = nickinput.value;
     const emailinput = document.getElementById("femail");

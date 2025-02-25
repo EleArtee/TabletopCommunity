@@ -41,14 +41,16 @@ exports.giveJTK = (req, res) => {
         id: req.body.id,
         nick: req.body.nick
     };
+    if (!user.id || !user.nick){
+        res.send("400 BAD REQUEST")
+    }
 
     const firma = 'r4dl4nds1sc00l'
     const caducidad = {expiresIn: '6h'};
 
     const token = jwt.sign(user, firma, caducidad)
 
-    console.log(token)
-
     res.send(token)
+   
 }
 
