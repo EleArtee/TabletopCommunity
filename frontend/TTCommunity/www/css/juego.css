@@ -152,9 +152,7 @@ td{
 #reviews{
     padding: 10px;
     padding-bottom: 0px;
-    height: 500px;
-    overflow-y: scroll;
-    scrollbar-color: #091d65 #b3d8fc;
+    
 }
 
 #info{
@@ -180,4 +178,79 @@ td{
 
 #review{
     text-align: center;
+    overflow-y: scroll;
+    scrollbar-color: #091d65 #b3d8fc;
+    height: 500px;
+}
+
+#buttonrev{
+    text-align: center;
+}
+
+button{
+    text-align: center;
+    border-radius: 8px;
+    background-color:#6b9bff ;
+    text-decoration: none;
+    color: white;
+    padding: 12px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    font-size: 20px;
+    border: none;
+    margin-bottom: 10px ;
+    cursor: pointer;
+}
+
+button:active{
+    background-color: #091d65;
+}
+
+/* Modal stuff a partir de aquí */
+
+.modal{
+  display: none; 
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0, 0, 0, 0.514); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    width: 30%; /* Could be more or less, depending on screen size */
+    
+}
+  
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.inputcenter{
+   text-align: center;
+   display: inline;
+   
+}
+
+#reviewtext{
+    width: 100%;
+    height: 150px;
 }

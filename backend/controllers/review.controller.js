@@ -6,7 +6,10 @@ exports.create = (req, res) =>{
     const review = {
        estrellas: req.body.estrellas,
        cuerpo: req.body.cuerpo,
+       idGame: req.body.idGame
     }
+    
+
 
     if (!req.body.estrellas){
         res.status(400).send({

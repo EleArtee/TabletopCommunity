@@ -6,9 +6,31 @@ const REVIEW_URL = 'http://localhost:8080/api/review'
 let TAG_URL = 'http://localhost:8080/api/tag/'
 const TG_URL = 'http://localhost:8080/api/taggame'
 
+var modal = document.getElementById("myModal");
 
+// Get the button that opens the modal
+var btn = document.getElementById("buttonrev");
 
-console.log(API_URL)
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 
   async function getGame() {
     const response = await fetch(API_URL, {method: 'GET'})
@@ -35,10 +57,15 @@ console.log(API_URL)
             console.log(stars)
         }
     }
-    console.log(stars)
-    console.log(nReviews)
 
-    let media = stars/nReviews
+    let media = 0;
+
+    if (stars == 0){
+        media = 0
+    }
+    else{
+        media = stars/nReviews
+    }
 
     let basic = document.querySelector("#basicdata");
     let out1 = `
@@ -101,6 +128,31 @@ console.log(API_URL)
     }
     etiquetas.innerHTML = out4;
     }
+
+async function uploadReview(){
+    const starsinput = document.getElementById("stars")
+    const stars = starsinput.value;
+    const textreviewinput = document.getElementById("reviewtext")
+    const textreview = textreviewinput.value;
+
+    const review ={
+        estrellas: stars,
+        cuerpo: textreview,
+        idGame: id
+    }
+
+    newreview = JSON.stringify(review)
+
+    const response = await fetch(REVIEW_URL, {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: newreview
+    })
+    location.reload()
+}
 
 
   getGame()
