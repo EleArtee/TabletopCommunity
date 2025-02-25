@@ -3,7 +3,9 @@ let TAG_URL = 'http://localhost:8080/api/tag/'
 
   async function allGames() {
     const response = await fetch(API_URL, {method: 'GET'})
+    console.log(typeof response)
     let data = await response.json()
+    console.log(typeof data)
 
     let placeholder = document.querySelector("#juegos");
     let out = "";

@@ -128,7 +128,7 @@ label{
     color: #091d65 ;
 }
 
-input[type=submit]{
+input[type=button]{
     border: none;
     background-color: #334a9b;
     cursor: pointer;
