@@ -26,6 +26,7 @@ async function signup(){
         body: newuser
     })
 
+    window.location.href = "../html/login.html"
     console.log("Hemos llegao")
 
 }

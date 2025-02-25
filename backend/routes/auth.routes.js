@@ -3,7 +3,7 @@ module.exports = app => {
     var router = require("express").Router();
 
     router.post("/hash", Auth.checkHash)
-    router.post("/")
+    router.post("/", Auth.giveJTK)
 
     app.use('/api/auth', router)
 }

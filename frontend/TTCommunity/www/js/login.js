@@ -9,12 +9,12 @@ async function login(){
     const passinput = document.getElementById("fpassw");
     const pass = passinput.value;
 
-    const user = {
+    const usercred = {
         email: email,
         contrasena: pass
     }
     
-    checkuser = JSON.stringify(user)
+    checkuser = JSON.stringify(usercred)
 
     const answer = await fetch(HASH_URL, 
         {method: 'POST',
@@ -25,25 +25,47 @@ async function login(){
         body: checkuser}
     )
 
-    console.log(answer);
-    console.log(typeof answer);
+    let booli = await answer.json()
 
     const usearch = await fetch(USER_URL, {method:'GET'})
     let data = await usearch.json()
     let idUser = 0;
+    let nickUser = "";
+    let activator = false;
 
     for (let user of data){
         if (user.email == email){
             idUser = user.idUser
-            if(answer){
-                console.log("wi")
+            nickUser = user.nick
+            if(booli == true){
+                activator = true;
             }
             else{
                 alert("La contraseña es incorrecta")
             }
         }
     }
-    alert('No existe un usuario con este correo')
+
+    if(idUser == 0){
+        alert('No existe un usuario con este correo')}
+
+    if(activator == true){
+        const user = {
+            id: idUser,
+            nick: nickUser
+        }
+        const restoken = await fetch(AUTH_URL, 
+            {method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            body: user})
+        let token = await restoken.json()
+        localStorage.setItem('token', token);
+        window.location.href = "../html/index.html"
+    }
+
     console.log("Hemos llegao")
 /*     const userfind = await fetch (API_URL+idUser, {method: 'GET'})
     let user = await response.json()  */
