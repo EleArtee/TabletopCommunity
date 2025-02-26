@@ -1,6 +1,11 @@
 const API_URL = 'http://localhost:8080/api/juego'
 let TAG_URL = 'http://localhost:8080/api/tag/'
 
+async function desconectar(){
+  localStorage.removeItem('token');
+  window.location.href = "../html/index.html"
+}
+
 async function checkLogging(){
   const AUTH_URL = 'http://localhost:8080/api/auth'
 
@@ -13,18 +18,25 @@ async function checkLogging(){
   const tokenize = JSON.stringify({
       jwtoken: token
   })
-  const expirecheck = await fetch(AUTH_URL + '/expire', {
-      method: "POST",
-      headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-          },
-      body: tokenize
-  })
+  let expirecheck = "";
+  let expire = "";
 
-  let expire = await expirecheck.json()
+  if(token != null){
+      expirecheck = await fetch(AUTH_URL + '/expire', {
+          method: "POST",
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+              },
+          body: tokenize
+          })
+      expire = await expirecheck.json()
+  }
+  else{
+      expire = true
+  }
 
-  if(token == null || expire == true){
+  if(expire == true){
       signup.classList.remove("hidden")
       login.classList.remove("hidden")
       profile.classList.add("hidden")

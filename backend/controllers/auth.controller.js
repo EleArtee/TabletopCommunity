@@ -77,7 +77,7 @@ exports.takeNick = (req, res) => {
     const token = jwt.verify(jwtoken, firma)
     const nick = token.nick;
     
-    res.send(nick.toString)
+    res.send(nick)
 
 
 }

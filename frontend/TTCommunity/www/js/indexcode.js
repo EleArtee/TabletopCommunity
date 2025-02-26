@@ -1,4 +1,9 @@
 
+async function desconectar(){
+    localStorage.removeItem('token');
+    window.location.href = "../html/index.html"
+}
+
 async function checkLogging(){
     const AUTH_URL = 'http://localhost:8080/api/auth'
 
@@ -13,16 +18,25 @@ async function checkLogging(){
     const tokenize = JSON.stringify({
         jwtoken: token
     })
-    const expirecheck = await fetch(AUTH_URL + '/expire', {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-            },
-        body: tokenize
-    })
 
-    let expire = await expirecheck.json()
+    let expirecheck = "";
+    let expire = "";
+
+    if(token != null){
+        expirecheck = await fetch(AUTH_URL + '/expire', {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+            body: tokenize
+            })
+        expire = await expirecheck.json()
+    }
+    else{
+        expire = true
+    }
+    
 
     if(token == null || expire == true){
         signup.classList.remove("hidden")
@@ -41,7 +55,7 @@ async function checkLogging(){
                 },
             body: tokenize
         })
-    
+
         let nickUser = await resid.text();
 
         signup.classList.add("hidden")
@@ -51,7 +65,7 @@ async function checkLogging(){
         unlogwelc.classList.add("hidden")
         logwelc.classList.remove("hidden")
 
-        let welcomeuser = document.getElementById(welcuser)
+        let welcomeuser = document.querySelector("#welcuser")
         let out = `<p class = "welcome text w-text">Encantados de tenerte de vuelta ${nickUser}</p>`
         welcomeuser.innerHTML = out
     }

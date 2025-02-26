@@ -75,8 +75,4 @@ async function login(){
 
     localStorage.setItem('token', token);
     window.location.href = "../html/index.html"
-
-    console.log("Hemos llegao")
-/*     const userfind = await fetch (API_URL+idUser, {method: 'GET'})
-    let user = await response.json()  */
 }

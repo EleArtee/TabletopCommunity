@@ -7,6 +7,11 @@ let TAG_URL = 'http://localhost:8080/api/tag/'
 const TG_URL = 'http://localhost:8080/api/taggame'
 const AUTH_URL = 'http://localhost:8080/api/auth'
 
+async function desconectar(){
+    localStorage.removeItem('token');
+    window.location.href = "../html/index.html"
+}
+
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -42,18 +47,25 @@ async function checkLogging(){
     const tokenize = JSON.stringify({
         jwtoken: token
     })
-    const expirecheck = await fetch(AUTH_URL + '/expire', {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-            },
-        body: tokenize
-    })
+    let expirecheck = "";
+    let expire = "";
 
-    let expire = await expirecheck.json()
-
-    if(token == null || expire == true){
+    if(token != null){
+        expirecheck = await fetch(AUTH_URL + '/expire', {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+            body: tokenize
+            })
+        expire = await expirecheck.json()
+    }
+    else{
+        expire = true
+    }
+  
+    if(expire == true){
         signup.classList.remove("hidden")
         login.classList.remove("hidden")
         profile.classList.add("hidden")
