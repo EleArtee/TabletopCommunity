@@ -177,22 +177,30 @@ async function checkLogging(){
     }
 async function checkReviewer(){
     const token = localStorage.getItem('token')
+    let expirecheck = "";
+    let expire = "";
 
-    const tokenize = JSON.stringify({
-        jwtoken: token
-    })
-    const expirecheck = await fetch(AUTH_URL + '/expire', {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-            },
-        body: tokenize
-    })
-  
-    let expire = await expirecheck.json()
+    if(token != null){
+        const tokenize = JSON.stringify({
+            jwtoken: token
+        })
+        expirecheck = await fetch(AUTH_URL + '/expire', {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+            body: tokenize
+        })
+        expire = await expirecheck.json()
+    }
+    else{
+        expire = true
+    }
+
+    
         
-    if(token == null || expire == true){
+    if(expire == true){
         alert('Tienes que conectarte para poder hacer una review')
         window.location.href = "../html/login.html"
     }
