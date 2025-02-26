@@ -1,34 +1,43 @@
 const db = require("../models");
 const Review = db.review;
 const Op = db.Sequelize.Op;
+const jwt = require('jsonwebtoken');
 
 exports.create = (req, res) =>{
     const review = {
        estrellas: req.body.estrellas,
        cuerpo: req.body.cuerpo,
-       idGame: req.body.idGame
+       idGame: req.body.idGame,
+       idUser: req.body.idUser
     }
     
-
-
-    if (!req.body.estrellas){
-        res.status(400).send({
-            message: "Falta información obligatoria"
-        });
-        return;
-    }
-
-    Review.create(review)
-    .then(data =>{
-        res.send(data);
+    const token = req.body.token
+    const firma = 'r4dl4nds1sc00l'
+    
+    jwt.verify(token, firma, function(err, decoded) {
+        if(err){
+            console.log(err)
+        }else{
+            if (!req.body.estrellas){
+                res.status(400).send({
+                    message: "Falta información obligatoria"
+                });
+                return;
+            }
+        
+            Review.create(review)
+            .then(data =>{
+                res.send(data);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Algo pasó mientras se creaba la review."
+                })
+            });
+        }
     })
-    .catch(err => {
-        res.status(500).send({
-            message:
-                err.message || "Algo pasó mientras se creaba la review."
-        })
-    });
-};
+}
 
 exports.findAll = (req, res) =>{
     Review.findAll()

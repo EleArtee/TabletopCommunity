@@ -5,6 +5,7 @@ const API_URL = 'http://localhost:8080/api/juego/' + id
 const REVIEW_URL = 'http://localhost:8080/api/review'
 let TAG_URL = 'http://localhost:8080/api/tag/'
 const TG_URL = 'http://localhost:8080/api/taggame'
+const AUTH_URL = 'http://localhost:8080/api/auth'
 
 var modal = document.getElementById("myModal");
 
@@ -128,17 +129,51 @@ window.onclick = function(event) {
     }
     etiquetas.innerHTML = out4;
     }
+async function checkReviewer(){
+    const token = localStorage.getItem('token')
 
+    console.log(token)
+    let idUser = 0;
+        
+    if(token == null){
+        alert('Tienes que conectarte para poder hacer una review')
+        window.location.href = "../html/login.html"
+    }
+}
 async function uploadReview(){
+    
+    const token = localStorage.getItem('token')
+
+    console.log(token)
+
+    tokenize = JSON.stringify({
+        jwtoken: token
+    })
+
+    const resid = await fetch(AUTH_URL + '/id', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+        body: tokenize
+    })
+
+    let idUser = await resid.text();
+
+
     const starsinput = document.getElementById("stars")
     const stars = starsinput.value;
     const textreviewinput = document.getElementById("reviewtext")
     const textreview = textreviewinput.value;
 
+    
     const review ={
         estrellas: stars,
         cuerpo: textreview,
-        idGame: id
+        idGame: id,
+        token: token,
+        idUser: idUser
     }
 
     newreview = JSON.stringify(review)

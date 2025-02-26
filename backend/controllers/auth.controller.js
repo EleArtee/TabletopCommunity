@@ -45,12 +45,39 @@ exports.giveJTK = (req, res) => {
         res.send("400 BAD REQUEST")
     }
 
+    console.log(user)
+
     const firma = 'r4dl4nds1sc00l'
     const caducidad = {expiresIn: '6h'};
 
     const token = jwt.sign(user, firma, caducidad)
 
+    console.log(token)
+    console.log(typeof token)
+
     res.send(token)
    
 }
 
+exports.takeId = (req, res) => {
+    const jwtoken = req.body.jwtoken
+    const firma = 'r4dl4nds1sc00l'
+
+    const token = jwt.verify(jwtoken, firma)
+    const userId = token.id;
+    
+    res.send(userId.toString())
+}
+
+exports.takeNick = (req, res) => {
+    const jwtoken = req.body.jwtoken
+    const firma = 'r4dl4nds1sc00l'
+
+
+    const token = jwt.verify(jwtoken, firma)
+    const nick = token.nick;
+    
+    res.send(nick)
+
+
+}

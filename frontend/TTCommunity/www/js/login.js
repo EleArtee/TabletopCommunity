@@ -65,8 +65,15 @@ async function login(){
         body: user}
     )
 
+    console.log(restoken)
+    console.log(typeof restoken)
 
-    localStorage.setItem('token', restoken);
+    let token = await restoken.text()
+
+    console.log(token)
+    console.log(typeof token)
+
+    localStorage.setItem('token', token);
     window.location.href = "../html/index.html"
 
     console.log("Hemos llegao")

@@ -4,6 +4,8 @@ module.exports = app => {
 
     router.post("/hash", Auth.checkHash)
     router.post("/", Auth.giveJTK)
+    router.post("/id", Auth.takeId)
+    router.post("/nick", Auth.takeNick)
 
     app.use('/api/auth', router)
 }
