@@ -32,6 +32,40 @@ window.onclick = function(event) {
   }
 }
 
+async function checkLogging(){
+    const token = localStorage.getItem('token')
+    const signup = document.getElementById("signuplink");
+    const login = document.getElementById("loginlink")
+    const profile = document.getElementById("profilink");
+    const logout = document.getElementById("logoutlink")
+
+    const tokenize = JSON.stringify({
+        jwtoken: token
+    })
+    const expirecheck = await fetch(AUTH_URL + '/expire', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+        body: tokenize
+    })
+
+    let expire = await expirecheck.json()
+
+    if(token == null || expire == true){
+        signup.classList.remove("hidden")
+        login.classList.remove("hidden")
+        profile.classList.add("hidden")
+        logout.classList.add("hidden")
+    }
+    else{
+        signup.classList.add("hidden")
+        login.classList.add("hidden")
+        profile.classList.remove("hidden")
+        logout.classList.remove("hidden")
+    }
+}
 
   async function getGame() {
     const response = await fetch(API_URL, {method: 'GET'})
@@ -132,10 +166,21 @@ window.onclick = function(event) {
 async function checkReviewer(){
     const token = localStorage.getItem('token')
 
-    console.log(token)
-    let idUser = 0;
+    const tokenize = JSON.stringify({
+        jwtoken: token
+    })
+    const expirecheck = await fetch(AUTH_URL + '/expire', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+        body: tokenize
+    })
+  
+    let expire = await expirecheck.json()
         
-    if(token == null){
+    if(token == null || expire == true){
         alert('Tienes que conectarte para poder hacer una review')
         window.location.href = "../html/login.html"
     }
@@ -189,5 +234,5 @@ async function uploadReview(){
     location.reload()
 }
 
-
+checkLogging()
   getGame()

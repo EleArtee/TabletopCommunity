@@ -14,20 +14,29 @@
                  <li class ="menu text"><a href="contacto.html" class ="menu">Contacto</a></li>
                  <li class ="menu text"><a href="lista.html" class ="menu">Listas</a></li>
                  <li class ="menu text"><a href="juegos.html" class ="menu">Juegos</a></li>
-                 <li class ="menu text"><a href="signin.html" class ="menu">Crear cuenta</a></li>
-                 <li class ="menu text"><a href="login.html" class ="menu">Conectarse</a></li>
+                 <div id="signuplink" ><li class ="menu text"><a href="signin.html" class ="menu">Crear cuenta</a></li></div>
+                 <div id="loginlink" ><li class ="menu text"><a href="login.html" class ="menu">Conectarse</a></li></div>
+                 <div id="profilink"><li class ="menu text"><a href="perfil.html" class ="menu">Perfil</a></li></div>
+                 <div id="logoutlink"><li class ="menu text"><a href="report.html" class ="menu">Desconectarse</a></li></div>
             </ul>
             </nav>
         </header>
          <main>
-            <h1 class="welcome title" id="bigT">¡Bienvenide a TTCommunity!</h1>
+            <div id="unlogwelc" ><h1 class="welcome title" id="bigT">¡Bienvenide a TTCommunity!</h1>
             <img src="../img/portada.jpg" id="portada">
             <article>
                 <p class = "welcome text w-text">Regístrate para hacer uso de todas las funcionalidades de la app:</p>
                 <a a href="login.html" class = "welcome-b">Conéctate</a>
                 <p class ="welcome text w-text">O, si no tienes una cuenta:</p>
                 <a href="signin.html" class = "welcome-b">Regístrate</a>
-            </article>
+            </article></div>
+            <div id="logwelc"><h1 class="welcome title" id="bigT">¡Bienvenide a TTCommunity!</h1>
+                <img src="../img/portada.jpg" id="portada">
+                <article>
+                    <div id="welcuser"><p class = "welcome text w-text">Encantados de tenerte de vuelta [usuario]</p></div>
+                    <a a href="perfil.html" class = "welcome-b">Perfil</a>
+            </article></div>
          </main>
     </body>
+    <script src="../js/indexcode.js"></script>
 </html>

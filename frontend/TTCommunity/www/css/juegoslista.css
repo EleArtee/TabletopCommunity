@@ -84,6 +84,10 @@ a.menu:hover{
     text-decoration-line: overline;
 }
 
+.hidden{
+    display:none
+}
+
 /* Concrete stuff for this css */
 
 #sidenav{

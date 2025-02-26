@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
+const expire = require('jwt-check-expiration')
 
 
 exports.checkHash = (req, res)  => {
@@ -77,7 +77,12 @@ exports.takeNick = (req, res) => {
     const token = jwt.verify(jwtoken, firma)
     const nick = token.nick;
     
-    res.send(nick)
+    res.send(nick.toString)
 
 
+}
+
+exports.checkExpire = (req, res) => {
+    const jwtoken = req.body.jwtoken
+    res.send(expire.isJwtExpired(jwtoken))
 }
