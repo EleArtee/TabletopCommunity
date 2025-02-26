@@ -100,7 +100,7 @@ form{
     padding-bottom: 50px;
 }
 
-#contact{
+#contact, #profile{
     width: 40%;
     background-color: #6b9bff;
     margin-top: 40px;
@@ -109,6 +109,10 @@ form{
     text-align: center;
     border-radius: 10px;
     padding-bottom: 50px;
+}
+
+#profile{
+    padding-bottom:40px;
 }
 
 .inputext{
@@ -152,4 +156,15 @@ input[type=button]{
 
 .icon{
     width: 25px;
+}
+
+tr, td, th{
+    border: 3px solid #091d65;
+}
+
+table{
+    border-collapse: collapse;
+    background-color: #b3d8fc;
+    margin-left: auto;
+    margin-right: auto;
 }
